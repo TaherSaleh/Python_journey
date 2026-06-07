@@ -1,0 +1,110 @@
+---
+
+```markdown
+# Mastering Python Basics: Objects, Variables, and Inspection
+
+Welcome to my learning log! This post breaks down the core fundamentals of Python's design philosophy: how it stores data, how variables work under the hood, and how to inspect any object on the fly.
+
+---
+
+## 1. Everything is an Object (Types & Identity)
+
+In Python, **everything is an object** (a distinct "thing" in memory). Every object has three core properties:
+* **Type:** The category or blueprint it belongs to (e.g., integers, strings, lists).
+* **Identity:** A unique "serial number" representing its physical address in your computer's memory.
+* **Value:** The actual data it holds.
+
+### Quick Code Check
+```python
+score = 42
+
+# Check the category (Type)
+print(type(score))  # Output: <class 'int'>
+
+# Check the unique memory address (Identity)
+print(id(score))    # Output: 140523812294024 (a unique tracking number)
+
+```
+
+> 💡 **The Hierarchy Concept:** Python categories can be nested inside larger families (parent-child relationships). For instance, a Boolean (`True` or `False`) is technically a specialized offspring of the integer family.
+
+---
+
+## 2. Variables & Comments
+
+### Variables are Labels, Not Boxes
+
+In Python, a variable is not a box you stuff a value into. Instead, a variable is a **sticky note** you slap onto an object.
+
+```python
+a = 10      # Label 'a' is attached to the number 10
+b = 5       # Label 'b' is attached to the number 5
+c = a * b   # Label 'c' is attached to the result (50)
+
+```
+
+#### Rules for Naming Variables:
+
+* **Allowed:** Must start with a letter or underscore `_`. Can contain numbers. (e.g., `item_count`)
+* **Not Allowed:** Cannot start with a number, and cannot contain spaces or symbols like `$`, `!`, `@`. (e.g., `3items`, `item count`)
+
+### Comments
+
+Use the `#` symbol to write notes for humans. Python completely ignores everything after the `#` on that line.
+
+```python
+# This is a comment. Python skips this entire line.
+total_price = 250  # Set the initial checkout price
+
+```
+
+---
+
+## 3. Object Attributes & The "Swiss Army Knife"
+
+Every object comes with its own built-in tools and data, known as **attributes**. You can inspect any object using the `dir()` function.
+
+```python
+age = 16
+print(dir(age)) # Returns a massive list of everything 'age' can do
+
+```
+
+When looking at the output of `dir()`, you will notice two types of attributes:
+
+1. **Hidden Attributes (`__init__`, `__mul__`):** Wrapped in double underscores ("dunder"). These handle internal operations behind the scenes.
+2. **Public Attributes (`numerator`, `bit_length`):** Intended for you to use.
+
+### Data Attributes vs. Methods
+
+* **Data Attributes:** Information the object stores. Accessed without parentheses.
+* **Methods:** Actions the object can perform. **Must** use parentheses `()` to run them.
+
+```python
+age = 16
+
+# 1. Accessing a Data Attribute
+print(age.numerator) # Output: 16 (Integers inherit this from the number family tree)
+
+# 2. Accessing a Method (Action)
+print(age.bit_length)   # Output: <built-in method...> (The tool is ready)
+print(age.bit_length()) # Output: 5 (The tool runs! 16 is '10000' in binary, which is 5 bits)
+
+```
+
+---
+
+## 🛠️ Pro-Tip: Self-Documenting in the Terminal
+
+You don't need to memorize methods. Use `help()` to read the manual for any attribute on the fly:
+
+```python
+age = 16
+help(age.bit_length)
+# Output: Returns the exact documentation and examples for how to use bit_length()
+
+```
+
+---
+
+`
